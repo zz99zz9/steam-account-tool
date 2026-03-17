@@ -18,7 +18,7 @@ def get_resource_path(relative_path):
 class EmailMergerApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("国科财通steam账号工具 v1.1")
+        self.root.title("国科财通steam账号工具 v1.1.1")
         self.root.geometry("900x600")
 
         # 设置窗口图标
@@ -225,7 +225,20 @@ class EmailMergerApp:
         # 弹出对话框让用户输入归属
         dialog = tk.Toplevel(self.root)
         dialog.title("输入归属")
-        dialog.geometry("300x120")
+        dialog.geometry("300x150")
+
+        # 让弹窗居中于主窗口
+        dialog.update_idletasks()
+        main_x = self.root.winfo_x()
+        main_y = self.root.winfo_y()
+        main_w = self.root.winfo_width()
+        main_h = self.root.winfo_height()
+        dialog_w = dialog.winfo_width()
+        dialog_h = dialog.winfo_height()
+        x = main_x + (main_w - dialog_w) // 2
+        y = main_y + (main_h - dialog_h) // 2
+        dialog.geometry(f"+{x}+{y}")
+
         dialog.transient(self.root)
         dialog.grab_set()
 
